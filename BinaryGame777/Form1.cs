@@ -91,6 +91,11 @@ namespace BinaryGame777
             }
             label1.Text = "Очки: " + p;
             pictureBox1.SendToBack();
+            if (v == 6)
+            {
+                Application.Exit();
+                this.Close();
+            }
         }
 
         int p = 0;
@@ -170,7 +175,6 @@ namespace BinaryGame777
                 else if (t == 30) y1 = 4;
             }
         }
-
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
