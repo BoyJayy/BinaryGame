@@ -136,6 +136,10 @@ namespace BinaryGame777
                     lbl[v, 0].Visible = false;
                     lbl[v, 1].Visible = false;
                     v--;
+
+                    label10.Visible = false;
+                    label10.Text = "5";
+                    timer1.Interval = 4000 + rand.Next(200);
                 }
             }
             //else
@@ -154,9 +158,10 @@ namespace BinaryGame777
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            timer1.Interval = 4000 + rand.Next(200);
+            label11.Text = "Уровень: " + y1;
             if (v < N - 1)
             {
+                timer1.Interval = 4000 + rand.Next(200);
                 v++;
                 for (int j = 0; j < M; j++)
                 {
@@ -168,12 +173,28 @@ namespace BinaryGame777
                 lbl[v, 0].Text = generate(y1);
                 lbl[v, 1].Text = "0";
 
-                t++;
-
-                if (t == 10) y1 = 2;
-                else if (t == 20) y1 = 3;
-                else if (t == 30) y1 = 4;
+                if (v == N - 1)
+                {
+                    label10.Visible = true;
+                    timer1.Interval = 1000;
+                }
             }
+            else
+            {
+                int a = Convert.ToInt32(label10.Text);
+                a--;
+                label10.Text = a.ToString();
+                if (label10.Text == "0")
+                {
+                    MessageBox.Show("Вы проиграли");
+                    Application.Exit();
+                }
+            }
+            t++;
+            if (t == 10) y1 = 2;
+            else if (t == 20) y1 = 3;
+            else if (t == 30) y1 = 4;
+            label11.Text = "Уровень: " + y1;
         }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
@@ -184,5 +205,6 @@ namespace BinaryGame777
         {
 
         }
+        //MessageBox.Show(Application.StartupPath + "\\1\\rsasd.mp3");
     }
 }
